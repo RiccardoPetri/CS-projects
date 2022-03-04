@@ -8,7 +8,7 @@ namespace FirstProgramsSolution
     class Program
     {
 
-        
+
 
         //static void Main(string[] args)
         static void Main()
@@ -34,9 +34,6 @@ namespace FirstProgramsSolution
             Console.WriteLine(matrix[0, 2]);
 
 
-
-
-
             try
             {
                 int z = 0;
@@ -50,10 +47,28 @@ namespace FirstProgramsSolution
             {
                 Console.WriteLine("a prescindere");
             }
+            //______________________________________________________________________________________________________________________________________
 
+            //INTERFACE IS A CONTRACT BETWEEN CLASSES
+            //They contain definitions for a group of related functionalities
+            //(they provide contracts that objects can use to work together (despite if i change one of two, like the  printer or even the pc)
+
+            //interface IEquatable<T> //use I and use a noun that describe the behaviour
+            //{ 
+            //bool Equals(T obj);        //members are automatically public
+            //}
+
+            //class NewClass : BaseClasse, IEquatable, IEquatable2
+
+            //i can use variable as interfaces
             //IEnumerable<T> //most generic, only if i want to output data
             //ICollection<T> //it extends IEnumerable (i can manipulate more)
-            IList<int> list = new List<int> { 1, 2, 3, 4, 5 }; //it extends ICollection (allow to index elements)
+            //IList<T> extends ICollection
+            //IDictionary extends IList
+
+            //a list that implement IList
+            IList<int> list = new List<int> { 1, 2, 3, 4, 5 };
+
             foreach(var t in list)
             {
                 Console.WriteLine(t);
@@ -67,6 +82,39 @@ namespace FirstProgramsSolution
                 if(t % 2 == 0)
                     evenNumbers.Add(t);
             }
+            //______________________________________________________________________________________________________________________________________
+            // COLLECTIONS         System.Collections
+
+            //(Collections cant be instantiate, but Class like List, yes!!!!!!!!  new List<int>()
+
+            //ArrayList
+            //Queue
+            //Stack
+            //Hashtable
+            //SortedList
+
+            //______________________________________________________________________________________________________________________________________
+            //GENERIC COLLECTIONS   System.Collections.Generics
+
+
+            //Use generic collections, because they perform better
+
+            //List<T>
+            //LinkedList<T>
+            //Queue<T>
+            //Stack<T> (it use Push and Pop)
+            //all three implements IDictionary but using different data structures
+            //Dictionary<Tkey,TValue>           hash table
+            //SortedList<TKey,TValue>           array of key-value pairs
+            //SortedDictionary<Tkey,Tvalue>     binary search tree 
+
+
+            //IList -> properties: Count, IsReadOnly, Item (x = myList[2] uses Item property to access myList and assign the third element to x)
+            //      -> methods:    Add, Clear, Contains, CopyTo, Remove, IndexOf, insert, RemoveAt
+
+            //IDictionary -> properties: Count, IsReadOnly, Item (n = phoneBook["Ben"]; providing the key inside the brackets and assign the value),   Keys, Values
+            //            -> methods:    Add(T), Clear, Contains, CopyTo, Remove(T), Add(TKey,TValue), ContainsKey, Remove(TKey),TryGetValue
+
 
             //______________________________________________________________________________________________________________________________________
             //ENUMS NON VA
@@ -87,7 +135,7 @@ namespace FirstProgramsSolution
             //______________________________________________________________________________________________________________________________________
 
             //STRUCTS (non può ereditare, ha sempre il costruttore di default (classi solo se non hanno un altro costruttore se no lo perdono)
-                     //usare strutture se sono sicuro di fare qualcosa di immutato.
+            //usare strutture se sono sicuro di fare qualcosa di immutato.
 
 
             int number1 = int.MaxValue;  //int is a struct and MaxValue is a property!
@@ -108,11 +156,24 @@ namespace FirstProgramsSolution
             var person = new Person();
             var person2 = new Person();
             rooster.DoCaw();    //the event caw has no subscribers yet
-            rooster.Caw += person.SayImUp; //adding a subscriber ( a method that will be invoked)
-            rooster.Caw += person2.SayImUp2;
+            rooster.Caw += Person.SayImUp; //adding a subscriber ( a method that will be invoked)
+            rooster.Caw += Person.SayImUp2;
             rooster.DoCaw();    //now it will invoke all of them
 
-             //______________________________________________________________________________________________________________________________________
+            //______________________________________________________________________________________________________________________________________
+
+
+                
+
+
+                
+
+
+
+
+
+
+
 
 
             Console.WriteLine(Radius2);
@@ -142,7 +203,7 @@ namespace FirstProgramsSolution
         //    }
         //}
 
-        
+
 
         //______________________________________________________________________________________________________________________________________
 
@@ -187,7 +248,7 @@ namespace FirstProgramsSolution
             public int X { get; }
             public int Y { get; }
 
-            public Point (int x, int y) //constructor!!!
+            public Point(int x, int y) //constructor!!!
             {
                 X = x;
                 Y = y;
@@ -221,12 +282,12 @@ namespace FirstProgramsSolution
 
         class Person
         {
-            public void SayImUp()
+            public static void SayImUp()
             {
                 Console.WriteLine("buongiornooo");
             }
 
-            public void SayImUp2()
+            public static void SayImUp2()
             {
                 Console.WriteLine("buongiornooooooooooooo");
             }
@@ -235,7 +296,7 @@ namespace FirstProgramsSolution
 
 
 
-        private static void run()
+        private static void Run()
         {
             for(int i = 0; i < 10; i++)
             {
